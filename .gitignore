@@ -1,0 +1,22 @@
+# 构建产物
+obj/
+build/
+dist/
+__pycache__/
+
+# IDE / 调试配置
+*.wvproj
+*.launch
+# MounRiver Studio 编辑器状态（含本地路径）
+.mrs/
+# VS Code 配置（含工具链绝对路径）
+.vscode/
+# PyInstaller 构建日志（含本地路径）
+iap_host/build.log
+
+# 其他
+*.o
+*.elf
+*.map
+*.claude	
+调试实录-2026-09-22-APP跳转卡死排查.md
