@@ -6,9 +6,9 @@
 /*********************************************************************
  * @fn      main
  *
- * @brief   APP Ö÷Ñ­»·£º1Hz RUN_LED ÐÄÌø + ÉÏÎ»»ú IAP Ð­Òé·þÎñ
- *          £¨UART4 ²éÑ¯ GET_INFO/GET_VER¡¢Éý¼¶Èë¿Ú GO_IAP 0x21£©¡£
- *          LED ÓëÐ­Òé¾ù°´ 10ms Ê±¼äÆ¬ÂÖÑ¯£¬²éÑ¯ÏìÓ¦ÑÓ³Ù <= 20ms¡£
+ * @brief   APP ä¸»å¾ªçŽ¯ï¼š1Hz RUN_LED å¿ƒè·³ + ä¸Šä½æœº IAP åè®®æœåŠ¡
+ *          ï¼ˆUART4 æŸ¥è¯¢ GET_INFO/GET_VERã€å‡çº§å…¥å£ GO_IAP 0x21ï¼‰ã€‚
+ *          LED ä¸Žåè®®å‡æŒ‰ 10ms æ—¶é—´ç‰‡è½®è¯¢ï¼ŒæŸ¥è¯¢å“åº”å»¶è¿Ÿ <= 20msã€‚
  *
  * @return  none
  */
@@ -20,15 +20,15 @@ int main(void)
     SystemCoreClockUpdate();
     Delay_Init();
 
-    PORT_Init();        /* PB13/PB14 LED + PB10 RS-485 ·½Ïò */
-    USART4_Init();      /* UART4 DMA+IDLE ½ÓÊÕ£¬·þÎñÉÏÎ»»ú²éÑ¯/Éý¼¶ÃüÁî */
+    PORT_Init();        /* PB13/PB14 LED + PB10 RS-485 æ–¹å‘ */
+    USART4_Init();      /* UART4 DMA+IDLE æŽ¥æ”¶ï¼ŒæœåŠ¡ä¸Šä½æœºæŸ¥è¯¢/å‡çº§å‘½ä»¤ */
 
     while (1) {
-        USART4_DataPack_Process();   /* ·Ç×èÈû£º½âÎö²¢Ó¦´ðÉÏÎ»»úÇëÇóÖ¡ */
+        USART4_DataPack_Process();   /* éžé˜»å¡žï¼šè§£æžå¹¶åº”ç­”ä¸Šä½æœºè¯·æ±‚å¸§ */
 
         Delay_Ms(10);
         tick++;
-        if ((tick % 50) == 0) {      /* 10ms x 50 = 500ms ·­×ª -> 1Hz ÐÄÌø */
+        if ((tick % 50) == 0) {      /* 10ms x 50 = 500ms ç¿»è½¬ -> 1Hz å¿ƒè·³ */
             if (GPIO_ReadOutputDataBit(GPIOB, LED_Pin) == Bit_SET) {
                 GPIO_ResetBits(GPIOB, LED_Pin);
             } else {

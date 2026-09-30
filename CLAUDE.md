@@ -88,13 +88,13 @@ BSP 驱动统一放各工程 `Bsp/` 目录：
 
 ### 文件编码
 
-**`docs/` 下所有文档与 `iap_host/` 侧 Python/资源文件统一 UTF-8（无 BOM）**。
-固件工程源文件编码历史混杂（`bsp_iap.*`、`bsp_usart.*`、`BOOT/User/main.c` 等为 UTF-8；`bsp_gpio.*`、
-两个 App 的 `User/main.c` 等仍为 GBK）。**改动某文件时与其现有编码保持一致**，不要顺手整文件转码（diff 会爆炸）；
-新增文档一律 UTF-8。
+**项目所有源文件（`.c` / `.h` / `.py` / `.md`）统一为 UTF-8（无 BOM）**。
+（2026-09-30 已完成编码统一：GBK 的 `bsp_gpio.*`、App/RTOS App 的 `User/main.c` 转 UTF-8；
+带 BOM 的 `bsp_iap.c`、`docs/protocol.md` 去除 BOM。）
+新增或修改文件一律保存为 UTF-8（无 BOM），不要顺手整文件转码（diff 会爆炸）。
 
 ## Git 规范
 
 - `.gitignore` 排除 `obj/`、`build/`、`dist/`、`__pycache__/`、`*.wvproj`/`*.launch` 等 IDE 与构建产物
-- 提交含中文注释的源文件前确认编码：`docs/`、`iap_host/` 全部 UTF-8；固件源文件保持其原有编码（UTF-8 或 GBK），勿整文件转码
+- 提交前确认编码：所有源文件（`docs/`、`iap_host/`、固件工程）均为 UTF-8（无 BOM）；勿整文件转码
 - 修改 `bsp_iap.*` / `iap_host.py` 协议相关代码时，同步更新 `docs/protocol.md`

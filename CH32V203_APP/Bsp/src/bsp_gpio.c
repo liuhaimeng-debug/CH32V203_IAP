@@ -1,29 +1,29 @@
 #include "bsp_gpio.h"
 
 /*******************************************************************************
- * º¯ÊıÃû  : PORT_Init
- * ËµÃ÷       : ³õÊ¼»¯IO
- * ÊäÈë       : None
- * Êä³ö       : None
+ * å‡½æ•°å  : PORT_Init
+ * è¯´æ˜       : åˆå§‹åŒ–IO
+ * è¾“å…¥       : None
+ * è¾“å‡º       : None
  *******************************************************************************/
 void PORT_Init (void) {
 
-    GPIO_InitTypeDef GPIO_InitStructure = {0};                                     // ¶¨ÒåÒ»¸öGPIO_InitTypeDefÀàĞÍµÄ½á¹¹Ìå
+    GPIO_InitTypeDef GPIO_InitStructure = {0};                                     // å®šä¹‰ä¸€ä¸ªGPIO_InitTypeDefç±»å‹çš„ç»“æ„ä½“
 
-    RCC_APB2PeriphClockCmd (RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB, ENABLE);  // Ê¹ÄÜGPIOA¡¢B¶Ë¿ÚÊ±ÖÓ
-
-
-    GPIO_InitStructure.GPIO_Pin = ERR_LED_Pin | LED_Pin;  // ÅäÖÃGPIOÒı½Å
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;      // ÉèÖÃGPIOÄ£Ê½ÎªÍÆÍìÊä³ö
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;      // ÉèÖÃGPIO¿ÚÊä³öËÙ¶È
-    GPIO_Init (GPIOB, &GPIO_InitStructure);               // µ÷ÓÃ¿âº¯Êı£¬³õÊ¼»¯GPIOB
-
-    GPIO_SetBits (GPIOB, ERR_LED_Pin|LED_Pin );          // ÉèÖÃÒı½ÅÊä³ö¸ßµçÆ½
-    // GPIO_ResetBits(GPIOB, ERR_LED_Pin);        //ÉèÖÃÒı½ÅÊä³öµÍµçÆ½
+    RCC_APB2PeriphClockCmd (RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB, ENABLE);  // ä½¿èƒ½GPIOAã€Bç«¯å£æ—¶é’Ÿ
 
 
-    GPIO_InitStructure.GPIO_Pin = SENSOR_Pin;         // ÅäÖÃGPIOÒı½Å
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;     // ÉèÖÃGPIOÄ£Ê½ÎªÉÏÀ­ÊäÈë
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;  // ÉèÖÃGPIO¿ÚÊä³öËÙ¶È
-    GPIO_Init (GPIOA, &GPIO_InitStructure);           // µ÷ÓÃ¿âº¯Êı£¬³õÊ¼»¯GPIOB
+    GPIO_InitStructure.GPIO_Pin = ERR_LED_Pin | LED_Pin;  // é…ç½®GPIOå¼•è„š
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;      // è®¾ç½®GPIOæ¨¡å¼ä¸ºæ¨æŒ½è¾“å‡º
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;      // è®¾ç½®GPIOå£è¾“å‡ºé€Ÿåº¦
+    GPIO_Init (GPIOB, &GPIO_InitStructure);               // è°ƒç”¨åº“å‡½æ•°ï¼Œåˆå§‹åŒ–GPIOB
+
+    GPIO_SetBits (GPIOB, ERR_LED_Pin|LED_Pin );          // è®¾ç½®å¼•è„šè¾“å‡ºé«˜ç”µå¹³
+    // GPIO_ResetBits(GPIOB, ERR_LED_Pin);        //è®¾ç½®å¼•è„šè¾“å‡ºä½ç”µå¹³
+
+
+    GPIO_InitStructure.GPIO_Pin = SENSOR_Pin;         // é…ç½®GPIOå¼•è„š
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;     // è®¾ç½®GPIOæ¨¡å¼ä¸ºä¸Šæ‹‰è¾“å…¥
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;  // è®¾ç½®GPIOå£è¾“å‡ºé€Ÿåº¦
+    GPIO_Init (GPIOA, &GPIO_InitStructure);           // è°ƒç”¨åº“å‡½æ•°ï¼Œåˆå§‹åŒ–GPIOB
 }

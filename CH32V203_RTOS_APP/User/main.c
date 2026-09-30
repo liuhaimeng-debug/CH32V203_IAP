@@ -25,22 +25,22 @@
 
 
 /*
-  ÈÎÎñÓÅÏÈ¼¶ÊıÖµÔ½´óÓÅÏÈ¼¶Ô½¸ß
+  ä»»åŠ¡ä¼˜å…ˆçº§æ•°å€¼è¶Šå¤§ä¼˜å…ˆçº§è¶Šé«˜
 */
-#define START_TASK_PRIO 1               //ÈÎÎñÓÅÏÈ¼¶
-#define START_STK_SIZE  256             //ÈÎÎñ¶ÑÕ»´óĞ¡
-TaskHandle_t StartTask_Handler;         //ÈÎÎñ¾ä±ú
-void start_task(void *pvParameters);    //ÈÎÎñº¯Êı
+#define START_TASK_PRIO 1               //ä»»åŠ¡ä¼˜å…ˆçº§
+#define START_STK_SIZE  256             //ä»»åŠ¡å †æ ˆå¤§å°
+TaskHandle_t StartTask_Handler;         //ä»»åŠ¡å¥æŸ„
+void start_task(void *pvParameters);    //ä»»åŠ¡å‡½æ•°
 
-#define LED_TASK_PRIO 2                 //ÈÎÎñÓÅÏÈ¼¶
-#define LED_STK_SIZE  256               //ÈÎÎñ¶ÑÕ»´óĞ¡
-TaskHandle_t LedTask_Handler;           //ÈÎÎñ¾ä±ú
-void led_task(void *pvParameters);      //ÈÎÎñº¯Êı
+#define LED_TASK_PRIO 2                 //ä»»åŠ¡ä¼˜å…ˆçº§
+#define LED_STK_SIZE  256               //ä»»åŠ¡å †æ ˆå¤§å°
+TaskHandle_t LedTask_Handler;           //ä»»åŠ¡å¥æŸ„
+void led_task(void *pvParameters);      //ä»»åŠ¡å‡½æ•°
 
-#define USART4_TASK_PRIO 3              //ÈÎÎñÓÅÏÈ¼¶
-#define USART4_STK_SIZE  1024            //ÈÎÎñ¶ÑÕ»´óĞ¡
-TaskHandle_t Usart4Task_Handler;        //ÈÎÎñ¾ä±ú
-void usart4_task(void *pvParameters);   //ÈÎÎñº¯Êı
+#define USART4_TASK_PRIO 3              //ä»»åŠ¡ä¼˜å…ˆçº§
+#define USART4_STK_SIZE  1024            //ä»»åŠ¡å †æ ˆå¤§å°
+TaskHandle_t Usart4Task_Handler;        //ä»»åŠ¡å¥æŸ„
+void usart4_task(void *pvParameters);   //ä»»åŠ¡å‡½æ•°
 
 /*********************************************************************
  * @fn      main
@@ -59,13 +59,13 @@ int main(void)
     BSP_PORT_Init();
     USART4_Init();
 
-    //´´½¨¿ªÊ¼ÈÎÎñ
-    xTaskCreate((TaskFunction_t )start_task,            //ÈÎÎñº¯Êı
-                (const char*    )"start_task",          //ÈÎÎñÃû³Æ
-                (uint16_t       )START_STK_SIZE,        //ÈÎÎñ¶ÑÕ»´óĞ¡
-                (void*          )NULL,                  //´«µİ¸øÈÎÎñº¯ÊıµÄ²ÎÊı
-                (UBaseType_t    )START_TASK_PRIO,       //ÈÎÎñÓÅÏÈ¼¶
-                (TaskHandle_t*  )&StartTask_Handler);   //ÈÎÎñ¾ä±ú
+    //åˆ›å»ºå¼€å§‹ä»»åŠ¡
+    xTaskCreate((TaskFunction_t )start_task,            //ä»»åŠ¡å‡½æ•°
+                (const char*    )"start_task",          //ä»»åŠ¡åç§°
+                (uint16_t       )START_STK_SIZE,        //ä»»åŠ¡å †æ ˆå¤§å°
+                (void*          )NULL,                  //ä¼ é€’ç»™ä»»åŠ¡å‡½æ•°çš„å‚æ•°
+                (UBaseType_t    )START_TASK_PRIO,       //ä»»åŠ¡ä¼˜å…ˆçº§
+                (TaskHandle_t*  )&StartTask_Handler);   //ä»»åŠ¡å¥æŸ„
     vTaskStartScheduler();
 
     while(1)
@@ -77,7 +77,7 @@ int main(void)
 void start_task(void *pvParameters)
 {
 
-    taskENTER_CRITICAL();       //¿ªÆôÁÙ½çÇø
+    taskENTER_CRITICAL();       //å¼€å¯ä¸´ç•ŒåŒº
 
     xTaskCreate((TaskFunction_t ) led_task,
                 (const char   * ) "led_task",
@@ -92,8 +92,8 @@ void start_task(void *pvParameters)
                 (UBaseType_t    ) USART4_TASK_PRIO,
                 (TaskHandle_t * ) &Usart4Task_Handler);
 
-    vTaskDelete(StartTask_Handler);           //É¾³ı¿ªÊ¼ÈÎÎñ
-    taskEXIT_CRITICAL();                      //ÍË³öÁÙ½çÇø
+    vTaskDelete(StartTask_Handler);           //åˆ é™¤å¼€å§‹ä»»åŠ¡
+    taskEXIT_CRITICAL();                      //é€€å‡ºä¸´ç•ŒåŒº
 }
 
 void led_task(void *pvParameters)

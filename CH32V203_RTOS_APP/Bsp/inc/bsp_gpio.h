@@ -5,13 +5,13 @@
 
 #define RUN_LED_Pin                 GPIO_Pin_14
 #define ERR_LED_Pin                 GPIO_Pin_13
-#define Run_LED(n)      (n ? GPIO_WriteBit(GPIOB, RUN_LED_Pin, Bit_SET) : GPIO_WriteBit(GPIOB, RUN_LED_Pin, Bit_RESET))          //‘À––µ∆
-#define ERR_LED(n)      (n ? GPIO_WriteBit(GPIOB, ERR_LED_Pin, Bit_SET) : GPIO_WriteBit(GPIOB, ERR_LED_Pin, Bit_RESET))          //π ’œµ∆
+#define Run_LED(n)      (n ? GPIO_WriteBit(GPIOB, RUN_LED_Pin, Bit_SET) : GPIO_WriteBit(GPIOB, RUN_LED_Pin, Bit_RESET))          //ËøêË°åÁÅØ
+#define ERR_LED(n)      (n ? GPIO_WriteBit(GPIOB, ERR_LED_Pin, Bit_SET) : GPIO_WriteBit(GPIOB, ERR_LED_Pin, Bit_RESET))          //ÊïÖÈöúÁÅØ
 
 
 #define SENSOR_Pin              GPIO_Pin_12
 #define SEN_STATE               GPIO_ReadInputDataBit(GPIOA, SENSOR_Pin)
 
-void BSP_PORT_Init(void);  //≥ı ºªØ
+void BSP_PORT_Init(void);  //ÂàùÂßãÂåñ
 
 #endif
